@@ -14,11 +14,9 @@ jobs:
 
       - name: 의존성 설치
         run: npm install
-        working-directory: ./
 
       - name: 빌드
         run: npm run build
-        working-directory: ./
 
       - name: AWS 인증 절차
         uses: aws-actions/configure-aws-credentials@v4
