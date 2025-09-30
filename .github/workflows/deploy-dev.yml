@@ -1,4 +1,4 @@
-name: Deploy to Prod S3
+name: Deploy to Dev S3
 
 on:
   push:
