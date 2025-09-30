@@ -14,11 +14,9 @@ jobs:
 
       - name: 의존성 설치
         run: npm install
-        working-directory: ./frontend
       
       - name: 빌드
         run: npm run build
-        working-directory: ./frontend
 
       - name: AWS 인증 절차
         uses: aws-actions/configure-aws-credentials@v4
@@ -29,8 +27,8 @@ jobs:
 
       - name: S3 기존 파일들 삭제 후 새로 업로드 
         run: |
-          aws s3 rm --recursive s3://prod-instagram-web-5
-          aws s3 cp ./dist s3://prod-instagram-web-5 --recursive
+          aws s3 rm --recursive s3://prod-instagram-web-5 --recursive --region ap-northeast-2
+          aws s3 cp ./dist s3://prod-instagram-web-5 --recursive --region ap-northeast-2
 
       - name: CloudFront 캐시 무효화
         run: aws cloudfront create-invalidation --distribution-id E1EMRA6G1YHYWG --paths "/*"
